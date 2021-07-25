@@ -1,0 +1,78 @@
+backend:
+  name: github
+  repo: cesramires/nextjs-blog
+  branch: develop
+publish_mode: editorial_workflow
+media_folder: "assets/images"
+public_folder: "/gh-pages/_next/static/images/"
+collections:
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "site/content/about.md"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Picture, name: picture, widget: image}
+          - {label: Intro, name: body, widget: markdown}
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Position, name: position, widget: string}
+              - {label: Photo, name: photo, widget: image}
+      - label: "Site Settings"
+        name: "settings"
+        file: "site/settings.md"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - label: "Portfolio Categories"
+            name: categories
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+          - label: "Slide Images"
+            name: slide
+            widget: list
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Alt, name: alt, widget: string, hint: "Alternate photo text"}
+              - {label: Photo, name: photo, widget: image}
+      - label: "Contact Page"
+        name: "contact"
+        file: "site/content/contact.md"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Google Maps URL, name: maps_url, widget: string}          
+          - {label: Phone, name: phone, widget: string}
+          - {label: Email, name: email, widget: string}
+          - {label: Address, name: address, widget: string}
+          - {label: Contact Title, name: form_title, widget: string}
+          - {Label: Contact Message, name: message, widget: string}
+          - {Label: Button Label, name: button, widget: string}
+          - {Label: Success Message, name: onsuccess, widget: string}          
+          - {Label: Failure Message, name: onfailure, widget: string}
+  - name: "portfolio"
+    label: "Portfolio"
+    label_singular: "Project"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Display", name: "isdisplayed", widget: "boolean", default: true}
+      - {label: "Category", name: "category", widget: "select", options: ["Residencial","Comercial","Interiores"]}
+      - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", time_format: false}
+      - {label: "Featured Image", name: "featimage", widget: "image", required: true}
+      - label: "Additional Photos"
+        name: carousel
+        widget: list
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Alt, name: alt, widget: string, hint: "Alternate photo text"}
+          - {label: Photo, name: photo, widget: image}
+      - {label: "Spec", name: "body", widget: "markdown"}
